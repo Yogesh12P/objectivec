@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "binary.h"
 
 int main(int argc, const char * argv[])
 {
@@ -15,8 +16,8 @@ int main(int argc, const char * argv[])
         // insert code here...
         NSLog(@"Program for binary search!");
         int arr[100];
-        int l1,flag=0;
-        int s,e,m;
+        //int i;
+        int l1;
         
         NSLog(@"Enter the array length:");
         scanf("%d",&l1);
@@ -26,36 +27,17 @@ int main(int argc, const char * argv[])
         {
             scanf("%d",&arr[i]);
         }
-        s=0;
-        e=l1;
-      
+       
         NSLog(@"Enter the element you want to search:");
         int n;
         scanf("%d",&n);
         
-        while (s<=e)
-        {
-            m=(s+e)/2;
-            if(n==arr[m])
-            {
-                NSLog(@"Given number found at position %d",m);
-                flag=1;
-                break;
-            }
-            else if(n<arr[m])
-                {
-                    e=m-1;
-                }
-                else if(n>arr[m])
-                {
-                    s=m+1;
-                }
-        }
+        Binary *obj = [[Binary alloc] init];
         
-        if(flag!=1)
-        {
-            NSLog(@"Given element not found");
-        }
+        int key;
+        
+        key = [obj search:(int *)arr :n :l1];
+        [obj display:key];
         
     }
     return 0;
